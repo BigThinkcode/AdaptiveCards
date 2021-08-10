@@ -32,6 +32,8 @@ class TestSampleImages(BaseAPITest):
                 self.client, self.api, self.headers, self.data
             )
             self.output = json.loads(self.response.data)
-            self.assertEqual(self.response.status_code, 200) # pylint: disable=no-member
+            self.assertEqual(
+                self.response.status_code, 200
+            )  # pylint: disable=no-member
             self.assertEqual(bool(self.output), True)
             self.assertIsNone(self.output["error"])
