@@ -1,7 +1,7 @@
 """Tests that run for a list of sample images
 for predict_json api.
 """
-
+# pylint: disable=no-member
 import json
 from tests.utils import get_response  # pylint: disable=no-name-in-module
 
@@ -32,8 +32,6 @@ class TestSampleImages(BaseAPITest):
                 self.client, self.api, self.headers, self.data
             )
             self.output = json.loads(self.response.data)
-            self.assertEqual(
-                self.response.status_code, 200
-            )  # pylint: disable=no-member
+            self.assertEqual(self.response.status_code, 200)
             self.assertEqual(bool(self.output), True)
             self.assertIsNone(self.output["error"])
