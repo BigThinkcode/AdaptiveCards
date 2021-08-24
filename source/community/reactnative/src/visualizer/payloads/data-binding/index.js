@@ -14,9 +14,5 @@ export default payloads = [
     {
         "title": "Stock Update",
         "json": require('./stock-update.json')
-    },
-    {
-        "title": "Vertical Alignment Container",
-        "json": require('./VerticalContentAlignment_Container.json')
     }
 ]

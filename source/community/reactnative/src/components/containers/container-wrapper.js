@@ -75,19 +75,15 @@ export class ContainerWrapper extends React.PureComponent {
             );
             switch (verticalContentAlignment) {
                 case Enums.VerticalAlignment.Center:
-                    computedStyles.push({ flex:1, justifyContent: Constants.CenterString });
+                    computedStyles.push({ justifyContent: Constants.CenterString });
                     break;
                 case Enums.VerticalAlignment.Bottom:
-                    computedStyles.push({ flex:1, justifyContent: Constants.FlexEnd });
+                    computedStyles.push({ justifyContent: Constants.FlexEnd });
                     break;
                 default:
-                    computedStyles.push({ flex:1, justifyContent: Constants.FlexStart });
+                    computedStyles.push({ justifyContent: Constants.FlexStart });
                     break;
             } 
-            //Constructing the vertical Content Alignment for nested containers
-            if(this.payload.parent.type === Constants.TypeContainer && this.payload.type === Constants.TypeContainer) {
-                this.payload.verticalContentAlignment = this.payload.parent["verticalContentAlignment"];
-            }
         } else {
             // vertical content alignment - Default is top
             computedStyles.push({ justifyContent: Constants.FlexStart });
