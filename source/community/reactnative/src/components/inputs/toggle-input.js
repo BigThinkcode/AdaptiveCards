@@ -69,7 +69,7 @@ export class ToggleInput extends React.Component {
 						return (
 							<View
 								accessible={true}
-								accessibilityLabel={this.altText}
+								accessibilityLabel={this.altText || Platform.OS === 'android' ? this.title : undefined}
 								style={styles.toggleView}
 								accessibilityRole={'switch'}
 								onAccessibilityAction={
@@ -94,7 +94,7 @@ export class ToggleInput extends React.Component {
 										this.toggleValueChanged(toggleValue, addInputItem)
 									}}>
 								</Switch>
-								<View style={styles.titleContainer}>
+								<View style={styles.titleContainer} importantForAccessibility='no-hide-descendants'>
 									<InputLabel configManager={this.props.configManager} isRequired={this.isRequired} wrap={this.wrapText} style={styles.title} label={this.title}/>
 								</View>
 							</View>

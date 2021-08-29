@@ -84,10 +84,12 @@ export class PickerInput extends React.Component {
 					<ElementWrapper configManager={this.props.configManager} style={styles.elementWrapper} json={this.payload} isError={this.state.isError} isFirst={this.props.isFirst}>
 						<InputLabel configManager={this.props.configManager} isRequired={this.isRequired} label={label} />
 						<TouchableOpacity style={styles.inputWrapper} onPress={this.props.showPicker}
+							accessibilityLabel={Platform.OS === 'android' ? (this.payload.altText || this.props.value || placeholder) : undefined}
 							accessibilityRole='button'>
 							{/* added extra view to fix touch event in ios . */}
 							<View
 								accessible={true}
+								importantForAccessibility={'no-hide-descendants'}
 								accessibilityLabel={this.payload.altText || this.props.value || placeholder}
 								pointerEvents='none'
 								style={this.getComputedStyles(showErrors)}>
