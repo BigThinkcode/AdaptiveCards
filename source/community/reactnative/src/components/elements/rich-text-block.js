@@ -202,17 +202,26 @@ function ParagraphElement (props) {
         const _accViews = [];
         /// We are assuming that link is always contained in the concatenated string
         links.forEach((link, index) => {
-        const start = concatenated_string.indexOf(link.text);
-        const end = start + link.text.length - 1;
-        const sIdx = indexLte(cumulative_len, start);
-        const eIdx = indexLte(cumulative_len, end);
-        _accViews.push((
-            <Text key={"__Acc_View_rtb" + index} 
-                style={{height: lines[eIdx].y - lines[sIdx].y + lines[eIdx].height, width: lines[sIdx].width, position: 'absolute', top: 1+lines[sIdx].y, left: lines[sIdx].x}}
-                accessibilityLabel={link.text}
-                accessibilityRole='link'
-                accessible={true}
-                onPress={() => {link.onClick()}}>{' '}</Text>));
+            const start = concatenated_string.indexOf(link.text);
+            const end = start + link.text.length - 1;
+            const sIdx = indexLte(cumulative_len, start);
+            const eIdx = indexLte(cumulative_len, end);
+            const style = {height: lines[eIdx].y - lines[sIdx].y + lines[eIdx].height, width: lines[sIdx].width, position: 'absolute', top: 1+lines[sIdx].y, left: lines[sIdx].x};
+
+            // The link just spans a single line
+            // This is slightly inaccurate, because it assumes each character occupies the same width, but this is the best we can do.
+            if (sIdx === eIdx) {
+                style.left = lines[sIdx].x + (lines[sIdx].width * (start - cumulative_len[sIdx])/lines[sIdx].text.length);
+                style.width = lines[sIdx].width * (link.text.length)/lines[sIdx].text.length;
+            }
+
+            _accViews.push((
+                <Text key={"__Acc_View_rtb" + index} 
+                    style={style}
+                    accessibilityLabel={link.text}
+                    accessibilityRole='link'
+                    accessible={true}
+                    onPress={() => {link.onClick()}}>{' '}</Text>));
 
         });
         setAccContainers(_accViews);
