@@ -11,7 +11,8 @@ import {
 	TextInput,
 	Modal,
 	Button,
-	ViewPropTypes
+	ViewPropTypes,
+	Platform
 } from 'react-native';
 
 import { InputContextConsumer } from '../../utils/context';
