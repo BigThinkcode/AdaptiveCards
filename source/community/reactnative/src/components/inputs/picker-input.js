@@ -152,14 +152,14 @@ export class PickerInput extends React.Component {
 const styles = StyleSheet.create({
 	inputWrapper: {
 		width: Constants.FullWidth,
-		marginTop: 3,
+		marginTop: 3
 	},
 	elementWrapper: {
 		marginVertical: 3
 	},
 	overlay: {
 		flex: 1,
-		backgroundColor: 'rgba(0,0,0,.3)',
+		backgroundColor: Constants.BackGroudDisabledColor,
 		alignItems: Constants.CenterString,
 		justifyContent: Constants.FlexEnd
 	},
@@ -167,8 +167,6 @@ const styles = StyleSheet.create({
 		width: Constants.FullWidth,
 		alignItems: Constants.CenterString,
 		flexDirection: Constants.FlexRow,
-		justifyContent: Constants.FlexEnd,
-		paddingHorizontal: 15,
-		marginTop: 15
+		justifyContent: Constants.FlexEnd
 	}
 });

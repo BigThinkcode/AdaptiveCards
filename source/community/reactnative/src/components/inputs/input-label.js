@@ -65,8 +65,7 @@ export default class InputLabel extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-		flexDirection: Constants.FlexRow,
-		marginLeft: 5
+		flexDirection: Constants.FlexRow
 	},
 	redAsterisk: {
 		marginLeft: 2,

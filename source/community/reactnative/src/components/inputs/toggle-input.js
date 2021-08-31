@@ -108,11 +108,9 @@ export class ToggleInput extends React.Component {
 
 const styles = StyleSheet.create({
 	toggleContainer: {
-		paddingTop: 5,
-		paddingBottom: 5
+		marginVertical: 3
 	},
 	toggleView: {
-		padding: 5,
 		flexDirection: Constants.FlexRowReverse,
 		justifyContent: Constants.SpaceBetween,
 		alignItems: Constants.CenterString,
