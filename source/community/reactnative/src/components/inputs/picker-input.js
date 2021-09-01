@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 	},
 	overlay: {
 		flex: 1,
-		backgroundColor: Constants.BackGroudDisabledColor,
+		backgroundColor: Constants.BackgroundDisabledColor,
 		alignItems: Constants.CenterString,
 		justifyContent: Constants.FlexEnd
 	},
