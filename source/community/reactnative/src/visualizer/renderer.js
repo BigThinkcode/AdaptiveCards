@@ -68,10 +68,29 @@ export default class Renderer extends React.Component {
     constructor(props) {
         super(props);
         this.payload = props.payload;
+        this.dataJson = props?.dataJson;
         this.onModalClose = props.onModalClose;
     }
 
+    getTemplatePayload(templatejson, datajson) {
+        try {
+
+            const template = new ACData.Template(templatejson);
+
+            templatePayload = template.expand({
+                $root: datajson
+            });
+            return templatePayload;
+        } catch (error) {
+        }
+    }
+
     bindPayloadWithData() {
+        if(this.payload && this.dataJson) {
+            this.payload = this.getTemplatePayload(this.payload, this.dataJson);
+            return;
+        }
+
         // Create a Template instance from the template payload
         var template = new ACData.Template(this.payload);
 

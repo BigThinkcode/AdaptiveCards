@@ -1,3 +1,9 @@
+/*// Sample entry with data json //,
+{
+    "title": "Entry With separate data json",
+    "json": require('./<template>.json'),
+    "data": require('./<data>.json')
+}*/
 export default payloads = [
     {
         "title": "adaptive-card-schema",

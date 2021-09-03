@@ -104,7 +104,9 @@ export class RichTextBlock extends React.Component {
             if (textRun.type.toLowerCase() == Constants.TextRunString) {
                 index > 0 && textRunElements.push(<Text key={"white-sapce-text" + index}>{" "}</Text>);
                 let textRunStyle = textRun.highlight ? [styles.text, { backgroundColor: this.props.configManager.hostConfig.richTextBlock.highlightColor }] : [styles.text];
-                textRun.underline && textRunStyle.push(styles.underlineStyle)
+                textRun.underline && textRunStyle.push(styles.underlineStyle);
+                textRun.italic && textRunStyle.push(styles.italic);
+                textRun.strikethrough && textRunStyle.push(styles.strikethrough);
                 textRunElements.push(
                     textRun.selectAction ? this.addActionElement(textRun, index) :
                         <Label
@@ -152,6 +154,12 @@ const styles = StyleSheet.create({
     },
     underlineStyle: {
 		textDecorationLine: 'underline',
-	}
+	},
+    italic: {
+        fontStyle: 'italic'
+    },
+    strikethrough: {
+        textDecorationLine: 'line-through'
+    }
 });
 
