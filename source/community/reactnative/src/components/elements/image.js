@@ -306,7 +306,7 @@ export class Img extends React.Component {
 					<Image style={imageComputedStyle}
 						accessible={true}
 						accessibilityLabel={this.payload.altText}
-                        resizeMode={'stretch'}
+                        resizeMode={Constants.AlignStretch}
 						source={{ uri: imageUrl }} />
 				</ElementWrapper>
 			}}
