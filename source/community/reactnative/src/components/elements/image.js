@@ -85,7 +85,7 @@ export class Img extends React.Component {
 	 */
 	getImageAlignment() {
 		let imageAlignmentStyle = [];
-        
+
 		switch (this.payload?.horizontalAlignment?.toLowerCase()) {
 			case Constants.CenterString:
 				imageAlignmentStyle.push(styles.centerAlignment);
@@ -346,10 +346,10 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 	},
 	imageStretch: {
-		alignSelf: Constants.AlignStretch,
+        alignSelf: Constants.AlignStretch,
         aspectRatio: 1,
         height:  Constants.Auto,
-		resizeMode: Constants.AlignStretch,
+        resizeMode: Constants.AlignStretch,
         width: '100%', 
 	},
 	imageAuto: {
