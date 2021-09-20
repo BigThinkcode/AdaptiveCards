@@ -260,6 +260,20 @@ export class Img extends React.Component {
 			console.log(`Couldn't get the image size: ${error.message}`);
 		});
 	}
+    
+    getImageComponent(imageUrl, wrapperComputedStyle, imageComputedStyle) {
+        return (
+            <ElementWrapper configManager={this.props.configManager} json={this.payload} isFirst={this.props.isFirst}
+            style={wrapperComputedStyle}
+            onPageLayout={this.onPageLayoutHandler}>
+                <Image style={imageComputedStyle}
+                    accessible={true}
+                    accessibilityLabel={this.payload.altText}
+                    resizeMode={Constants.AlignStretch}
+                    source={{ uri: imageUrl }} />
+            </ElementWrapper>
+        );
+    }
 
 	render() {
 		this.parseHostConfig();
@@ -299,16 +313,7 @@ export class Img extends React.Component {
 		let containerContent = (<InputContextConsumer>
 			{({ addResourceInformation }) => {
 				this.addResourceInformation = addResourceInformation;
-				return <ElementWrapper configManager={this.props.configManager} json={this.payload} isFirst={this.props.isFirst}
-					style={wrapperComputedStyle}
-					onPageLayout={this.onPageLayoutHandler}>
-
-					<Image style={imageComputedStyle}
-						accessible={true}
-						accessibilityLabel={this.payload.altText}
-                        resizeMode={Constants.AlignStretch}
-						source={{ uri: imageUrl }} />
-				</ElementWrapper>
+				return this.getImageComponent(imageUrl, wrapperComputedStyle, imageComputedStyle);
 			}}
 		</InputContextConsumer>);
 
@@ -354,6 +359,6 @@ const styles = StyleSheet.create({
 	},
 	imageAuto: {
 		alignSelf: Constants.CenterString,
-		resizeMode: ContainResizeMode,
+		resizeMode: Constants.AlignStretch,
 	},
 });
