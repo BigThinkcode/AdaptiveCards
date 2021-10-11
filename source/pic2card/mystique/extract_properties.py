@@ -202,16 +202,6 @@ class FontColor(AbstractFontColor):  # pylint: disable=too-few-public-methods
         if found_colors:
             index = distances.index(min(distances))
             color = found_colors[index]
-            if found_colors[index] == "Light":
-                background = q_a.getpalette()[:3]
-                foreground = q_a.getpalette()[3:6]
-                distance = np.sqrt(
-                    np.sum(
-                        (np.asarray(background) - np.asarray(foreground)) ** 2
-                    )
-                )
-                if distance < 150:
-                    color = "Default"
         return color
 
 
