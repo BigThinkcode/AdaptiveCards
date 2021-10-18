@@ -171,7 +171,7 @@ export class Column extends React.Component {
 
 		const minHeight = Utils.convertStringToNumber(this.column.minHeight);
 		//We will pass the style as array, since it can be updated in the container wrapper if required.
-		typeof minHeight === "number" && containerViewStyle.push({ minHeight, backgroundColor:"green" });
+		typeof minHeight === "number" && containerViewStyle.push({ minHeight });
 
 		return <ContainerWrapper configManager={this.props.configManager} json={this.column} hasBackgroundImage={this.props.hasBackgroundImage} isFirst={isFirst} isLast={isLast} style={[containerViewStyle]} containerStyle={this.props.containerStyle}>
 			<ActionComponent {...actionComponentProps}>
