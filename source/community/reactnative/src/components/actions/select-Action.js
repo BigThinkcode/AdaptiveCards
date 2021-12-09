@@ -55,6 +55,10 @@ export class SelectAction extends React.Component {
 			return null;
 		}
 
+		this.payload = this.props.selectActionData;
+		this.onExecuteAction = undefined;
+		this.toggleVisibilityForElementWithID = undefined;
+
 		const ButtonComponent = TouchableOpacity;
 		return (<InputContextConsumer>
 			{({ onExecuteAction, toggleVisibilityForElementWithID }) => {
