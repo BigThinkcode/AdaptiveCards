@@ -28,9 +28,13 @@ export class ActionWrapper extends React.Component {
 		}
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		if (nextProps.actions !== this.props.actions) this.hasShowCard = false;
-		return true;
+	componentDidUpdate(prevProps) {
+		if (prevProps.actions !== this.props.actions) {
+			this.hasShowCard = false;
+			this.setState({
+				isShowCard: false,
+			});
+		}
 	}
 
 	hasShowCard = false;
