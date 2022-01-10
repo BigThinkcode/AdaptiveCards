@@ -177,7 +177,7 @@ export class BackgroundImage extends React.Component {
     }
 
     render() {
-		this.backgroundImage = props.backgroundImage;
+		this.backgroundImage = this.props.backgroundImage;
         this.backgroundImage.url = Utils.getImageUrl(this.backgroundImage.url)
 
 		return (
