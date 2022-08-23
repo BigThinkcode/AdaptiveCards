@@ -118,9 +118,6 @@ export class Column extends React.Component {
 				flex = minValue / maxValue
 			}
 		}
-		else if (this.column.width === undefined || this.column.width === 'stretch') {
-			flex = 1
-		}
 		return flex;
 	}
 
@@ -150,6 +147,11 @@ export class Column extends React.Component {
 			containerViewStyle.push({ width: parseInt(this.column.width) })
 		} else {
 			containerViewStyle.push({ flex: this.flex(containerViewStyle) })
+		}
+		if(this.column.width == 'stretch') {
+			containerViewStyle.push({
+				flexGrow: 1,
+			})
 		}
 
 		let ActionComponent = React.Fragment;

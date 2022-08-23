@@ -116,6 +116,10 @@ export default payloads = [
     "json": require('./Container.BackgroundImageRepeatVertically.json')
   },
   {
+    "title": "Column.Width.Stretch.json",
+    "json": require('./Column.Width.Stretch.json')
+  },
+  {
     "title": "Column.Explicit.Size.json",
     "json": require('./Column.Explicit.Size.json')
   },
