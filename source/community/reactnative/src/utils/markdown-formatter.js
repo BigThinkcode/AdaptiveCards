@@ -365,10 +365,8 @@ export default class MarkdownFormatter extends React.PureComponent {
 		elementJsxArray.map((eachWord, index) => {
 			let key = 'text_' + index;
 
-			if (elementStylesArray[index].indexOf('hyperlinkText') !== -1) {
-				tempJSX.push(<Text key={key} style={[elementStylesArray[index]]} onPress={() => this.addOnPress(elementLinksArray[index])}>{eachWord}</Text>)
-			} else if (elementStylesArray[index].indexOf('bulletText') !== -1 || elementStylesArray[index].indexOf('numberedText') !== -1) {
-				tempJSX.push(<Text key={'list_item_' + index} style={[this.userStyles.concat(elementStylesArray[index])]}>{eachWord}</Text>)
+			if (elementStylesArray[index].indexOf('bulletText') !== -1 || elementStylesArray[index].indexOf('numberedText') !== -1) {
+				tempJSX.push(<Text key={'list_item_' + index} style={[this.userStyles.concat(elementStylesArray[index])]}  onPress={() => this.addOnPress(elementLinksArray[index])}>{eachWord}</Text>)
 			} else {
 				tempJSX.push(<Text key={key} style={[elementStylesArray[index]]} onPress={() => this.addOnPress(elementLinksArray[index])}>{eachWord}</Text>)
 			}
