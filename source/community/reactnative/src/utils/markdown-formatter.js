@@ -110,7 +110,7 @@ export default class MarkdownFormatter extends React.PureComponent {
 		}
 
 		return (
-			<View accessible={true} accessibilityLabel={this.altText || this.text}>
+			<View accessible={true} accessibilityLabel={this.altText || this.text} style={{alignSelf: 'baseline'}}>
 				{this.renderText(this.text)}
 			</View>
 		);
