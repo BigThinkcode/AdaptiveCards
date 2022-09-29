@@ -19,7 +19,6 @@
  
 	 constructor(props) {
 		 super(props);
- 
 		 this.payload = this.props.selectActionData;
 		 this.onExecuteAction = undefined;
 		 this.inputArray = undefined;
@@ -61,16 +60,16 @@
 				 break;
 		 }
 	 }
-	 getMergeObject = () => {
+	 getMergeObject = (payload) => {
 		 let mergedObject = {};
 		 for (const key in this.inputArray) {
 			 mergedObject[key] = this.inputArray[key].value;
 		 }
-		 if (this.data !== null) {
+		 if (payload !== null) {
 			 if (this.data instanceof Object)
-				 mergedObject = { ...mergedObject, ...this.data }
+				 mergedObject = { ...mergedObject, ...payload }
 			 else
-				 mergedObject["actionData"] = this.data;
+				 mergedObject["actionData"] = payload;
 		 }
 		 return mergedObject;
 	 }
@@ -82,7 +81,6 @@
 		 this.payload = this.props.selectActionData;
 		 this.onExecuteAction = undefined;
 		 this.toggleVisibilityForElementWithID = undefined;
- 
 		 const ButtonComponent = TouchableOpacity;
 		 return (<InputContextConsumer>
 			 {({ onExecuteAction, inputArray, addResourceInformation, toggleVisibilityForElementWithID }) => {
