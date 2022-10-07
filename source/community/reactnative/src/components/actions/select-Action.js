@@ -50,8 +50,8 @@
 		 for (const key in this.inputArray) {
 			 mergedObject[key] = this.inputArray[key].value;
 		 }
-		 if (actionPayload !== null) {
-			 if (actionPayload instanceof Object) {
+		 if (actionPayload !== null && actionPayload.data !== null) {
+			 if (actionPayload.data instanceof Object) {
 				 mergedObject = { ...mergedObject, ...actionPayload.data }
 				 actionPayload.data = mergedObject;
 			 }
