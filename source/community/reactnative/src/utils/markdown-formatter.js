@@ -110,7 +110,7 @@ export default class MarkdownFormatter extends React.PureComponent {
 		}
 
 		return (
-			<View accessible={true} accessibilityLabel={this.altText || this.text} style={{alignSelf: 'baseline'}}>
+			<View accessible={true} accessibilityLabel={this.altText || this.text} style={styles.accessibilityContainer}>
 				{this.renderText(this.text)}
 			</View>
 		);
@@ -463,6 +463,11 @@ MarkdownFormatter.propTypes = {
 };
 
 const styles = StyleSheet.create({
+	accessibilityContainer: {
+		alignSelf: 'baseline',
+		flexWrap: 'wrap',
+		flexDirection: 'row'
+	},
 	hyperlinkText: {
 		color: 'blue',
 		textDecorationLine: 'underline',
