@@ -18,8 +18,7 @@ export class Label extends React.Component {
 
 	render() {
 		this.hostConfig = this.props.configManager.hostConfig;
-
-		let { text, altText, wrap, maxLines, onDidLayout, isRequired } = this.props;
+		let { text, altText, wrap, maxLines, onDidLayout, isRequired, align } = this.props;
 
 		// parse & format DATE/TIME values
 		let lang = this.context.lang;
@@ -46,6 +45,7 @@ export class Label extends React.Component {
 				isRequired={!!isRequired}
 				altText={altText}
 				onDidLayout={onDidLayout}
+				textAlign={align?.toLowerCase()}
 				{...clickProps} />
 		)
 	}

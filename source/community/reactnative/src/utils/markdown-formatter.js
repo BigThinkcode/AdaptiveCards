@@ -9,6 +9,7 @@ import {
 	Linking,
 	View
 } from 'react-native';
+import {FlexEnd, FlexStart, CenterString} from '../utils/constants';
 import PropTypes from 'prop-types';
 
 let SPECIAL_CHAR_REGEX = new RegExp("[^a-z\\\\s\\d]", 'gi');
@@ -92,6 +93,18 @@ export default class MarkdownFormatter extends React.PureComponent {
 		this.init();
 	}
 
+	getAlignment = () => {
+		let alignment = {}
+		if(this.props.textAlign == 'right') {
+			alignment.alignSelf = FlexEnd
+		} else if (this.props.textAlign == 'center') {
+			alignment.alignSelf = CenterString
+		} else {
+			alignment.alignSelf = FlexStart
+		}
+		return alignment
+	}
+
 	render() {
 		this.numberOfLines = this.props.numberOfLines;
 		this.userStyles = this.props.defaultStyles;
@@ -110,9 +123,11 @@ export default class MarkdownFormatter extends React.PureComponent {
 		}
 
 		return (
-			<View accessible={true} accessibilityLabel={this.altText || this.text} style={styles.accessibilityContainer}>
+			<Text accessible={true} 
+				accessibilityLabel={this.altText || this.text} 
+				style={[styles.accessibilityContainer, this.getAlignment()]}>
 				{this.renderText(this.text)}
-			</View>
+			</Text>
 		);
 	}
 
