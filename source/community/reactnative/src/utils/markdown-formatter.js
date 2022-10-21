@@ -123,7 +123,8 @@ export default class MarkdownFormatter extends React.PureComponent {
 		}
 
 		return (
-			<Text accessible={true} 
+			<Text accessible={true}
+				numberOfLines={this.numberOfLines}
 				accessibilityLabel={this.altText || this.text} 
 				style={[styles.accessibilityContainer, this.getAlignment()]}>
 				{this.renderText(this.text)}
@@ -261,7 +262,7 @@ export default class MarkdownFormatter extends React.PureComponent {
 
 		if (this.matchesFound.length < 1) {
 			jsxArray.push(
-				<Text key={'text'} style={this.userStyles} numberOfLines={this.numberOfLines}>
+				<Text key={'text'} style={this.userStyles}>
 					{remainingText}{!!this.isRequired && this.getRedAsterisk()}
 				</Text>
 			);
