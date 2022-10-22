@@ -13,6 +13,7 @@ import {
 import ElementWrapper from '../elements/element-wrapper';
 import * as Constants from '../../utils/constants';
 import * as Utils from '../../utils/util';
+import * as Enums from '../../utils/enums';
 import { Label } from '../elements';
 
 export class FactSet extends React.Component {
@@ -93,9 +94,12 @@ export class FactSet extends React.Component {
 		// host config
 		let titleConfig = this.hostConfig.factSet.title;
 		let valueConfig = this.hostConfig.factSet.value;
-		factSetJson.facts.map((element, index) => {
-			renderedElement.push(
-				<View style={[styles.textContainer]} key={`FACT-${element.title}-${index}`} accessible={true}>
+
+		let spacing = this.hostConfig.getEffectiveSpacing(Enums.Spacing.Default)
+
+		return <View style={[styles.textContainer]}>
+			<View style={{maxWidth: '50%'}}>
+				{factSetJson.facts.map((element, index)=>
 					<Label
 						text={element.title}
 						size={titleConfig.size}
@@ -105,6 +109,10 @@ export class FactSet extends React.Component {
 						wrap={titleConfig.wrap}
 						configManager={this.props.configManager}
 						style={{ width: this.state.keyWidth }} />
+				)}
+			</View>
+			<View style={{alignSelf: 'stretch', marginLeft: spacing}}>
+				{factSetJson.facts.map((element, index)=>
 					<Label
 						text={element.value}
 						size={valueConfig.size}
@@ -114,11 +122,9 @@ export class FactSet extends React.Component {
 						wrap={valueConfig.wrap}
 						configManager={this.props.configManager}
 						style={[styles.valueTextStyle, { width: this.state.valueWidth }]} />
-				</View>
-			);
-		});
-
-		return renderedElement;
+				)}
+			</View>
+		</View>
 	}
 
     /**
