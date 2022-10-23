@@ -28,7 +28,8 @@ export class FactSet extends React.Component {
 		this.state = {
 			isMaximumWidthValueFound: false,
 			keyWidth: '50%',
-			valueWidth: '50%'
+			valueWidth: '50%',
+			maxWidth: 0,
 		}
 		this.viewSize = 0;
 		this.maxWidth = 0;
@@ -40,10 +41,11 @@ export class FactSet extends React.Component {
      * @description Measures the view size for Factset
      */
 	measureView(event) {
-		if (this.currentWidth === 0 || this.currentWidth !== event.nativeEvent.layout.width) {
-			this.currentWidth = event.nativeEvent.layout.width;
-			this.viewSize = event.nativeEvent.layout.width;
-			this.getFactSetWidthFromHostConfig();
+		let titleWidth = event.nativeEvent.layout.width
+		if(titleWidth > this.state.maxWidth) {
+			this.setState({
+				maxWidth: titleWidth
+			})
 		}
 	}
 
@@ -97,22 +99,25 @@ export class FactSet extends React.Component {
 
 		let spacing = this.hostConfig.getEffectiveSpacing(Enums.Spacing.Default)
 
-		return <View style={[styles.textContainer]}>
-			<View style={{maxWidth: '50%'}}>
-				{factSetJson.facts.map((element, index)=>
-					<Label
-						text={element.title}
-						size={titleConfig.size}
-						weight={titleConfig.weight}
-						color={titleConfig.color}
-						isSubtle={titleConfig.isSubtle}
-						wrap={titleConfig.wrap}
-						configManager={this.props.configManager}
-						style={{ width: this.state.keyWidth }} />
-				)}
-			</View>
-			<View style={{alignSelf: 'stretch', marginLeft: spacing}}>
-				{factSetJson.facts.map((element, index)=>
+		factSetJson.facts.map((element, index) => {
+			renderedElement.push(
+				<View style={[styles.textContainer]} key={`FACT-${element.title}-${index}`} accessible={true}>
+					<View style={{
+						marginRight: spacing,
+						width: this.state.maxWidth == 0 ? null : this.state.maxWidth,
+						maxWidth: '50%'
+					}}>
+						<Label
+							text={element.title}
+							size={titleConfig.size}
+							weight={titleConfig.weight}
+							color={titleConfig.color}
+							isSubtle={titleConfig.isSubtle}
+							wrap={titleConfig.wrap}
+							configManager={this.props.configManager}
+							onDidLayout={(event)=>this.measureView(event)}
+							/>
+					</View>
 					<Label
 						text={element.value}
 						size={valueConfig.size}
@@ -122,9 +127,11 @@ export class FactSet extends React.Component {
 						wrap={valueConfig.wrap}
 						configManager={this.props.configManager}
 						style={[styles.valueTextStyle, { width: this.state.valueWidth }]} />
-				)}
-			</View>
-		</View>
+				</View>
+			);
+		});
+
+		return renderedElement;
 	}
 
     /**
@@ -135,7 +142,7 @@ export class FactSet extends React.Component {
 		factSetObject = this.parsePayload(containerJson)
 		return (
 			<ElementWrapper configManager={this.props.configManager} json={containerJson} isFirst={this.props.isFirst}>
-				<View style={[styles.container]} onLayout={(event) => { this.measureView(event) }}>
+				<View style={[styles.container]}>
 					{factSetObject}
 				</View>
 			</ElementWrapper>

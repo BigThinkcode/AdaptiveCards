@@ -125,7 +125,8 @@ export default class MarkdownFormatter extends React.PureComponent {
 		return (
 			<Text accessible={true}
 				numberOfLines={this.numberOfLines}
-				accessibilityLabel={this.altText || this.text} 
+				accessibilityLabel={this.altText || this.text}
+				onLayout={this.props.onDidLayout}
 				style={[styles.accessibilityContainer, this.getAlignment()]}>
 				{this.renderText(this.text)}
 			</Text>
