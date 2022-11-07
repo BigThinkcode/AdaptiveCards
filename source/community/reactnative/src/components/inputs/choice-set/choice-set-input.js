@@ -45,7 +45,7 @@ export class ChoiceSetInput extends React.Component {
 		this.placeholder = this.payload.placeholder;
 		this.pickerRef = React.createRef();
 		this.state = {
-			selectedPickerValue: (this.payload.choices.find(choice => choice.value === this.payload.value)),
+			selectedPickerValue: (this.payload.choices.find(choice => choice.value === this.payload.value)) && this.payload.value,
 			isPickerSelected: false,
 			radioButtonIndex: undefined,
 			activeIndex: undefined,
