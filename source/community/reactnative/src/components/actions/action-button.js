@@ -226,7 +226,10 @@ export class ActionButton extends React.Component {
                         style={[styles.buttonIcon, this.styleConfig.actionIcon]}
                     />
                 ) : null}
-                <Text numberOfLines={1} style={this.getButtonTitleStyles()}>
+                <Text 
+					numberOfLines={1}
+					maxFontSizeMultiplier={this.props.maxFontSizeMultiplier}
+					style={this.getButtonTitleStyles()}>
                     {this.title}
                 </Text>
             </View>
