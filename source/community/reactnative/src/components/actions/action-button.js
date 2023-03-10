@@ -111,7 +111,7 @@ export class ActionButton extends React.Component {
 				 actionPayload already has `ignoreInputValidation` but to support 
 				 backward compatibility we are passing it explicitly
 				**/
-				this.onExecuteAction(actionPayload, actionPayload.ignoreInputValidation);
+				this.onExecuteAction(actionPayload, actionPayload.ignoreInputValidation || actionPayload.associatedInputs == Constants.NoneString);
 				break;
 			case Constants.ActionShowCard:
 				this.changeShowCardState();
