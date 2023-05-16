@@ -3,12 +3,12 @@
  */
 
 import React from 'react';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 import {
 	View,
 	Text,
 	TouchableOpacity,
-	StyleSheet,
-	ViewPropTypes,
+	StyleSheet
 } from 'react-native';
 import { Label } from '../../elements'
 import PropTypes from 'prop-types';
