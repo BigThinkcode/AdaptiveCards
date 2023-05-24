@@ -57,7 +57,7 @@
     "assert": "^2.0.0",
     "deprecated-react-native-prop-types": "^2.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-video": "^5.2.1"
+    "react-native-video": "5.2.1"
   },
   "jest": {
     "preset": "react-native",
