@@ -11,10 +11,9 @@ import {
 	TextInput,
 	Modal,
 	Button,
-	ViewPropTypes,
 	Platform
 } from 'react-native';
-
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 import { InputContextConsumer } from '../../utils/context';
 import ElementWrapper from '../elements/element-wrapper';
 import * as Constants from '../../utils/constants';

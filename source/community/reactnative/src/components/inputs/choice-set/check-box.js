@@ -8,8 +8,8 @@ import {
 	Text,
 	TouchableOpacity,
 	StyleSheet,
-	ViewPropTypes,
 } from 'react-native';
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 import { Label } from '../../elements'
 import PropTypes from 'prop-types';
 import * as Constants from '../../../utils/constants';

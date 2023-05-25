@@ -43,11 +43,11 @@
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react": "17.0.2",
-    "react-native": "0.68.2",
+    "patch-package": "^6.4.7",
+    "react": "18.2.0",
+    "react-native": "0.71.0",
     "react-test-renderer": "16.13.1",
-    "rnpm-plugin-windows": "^0.2.11",
-    "patch-package": "^6.4.7"
+    "rnpm-plugin-windows": "^0.2.11"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^6.0.2",
@@ -55,8 +55,9 @@
     "adaptivecards-templating": "1.0.0-rc.0",
     "antlr4ts": "^0.5.0-alpha.3",
     "assert": "^2.0.0",
+    "deprecated-react-native-prop-types": "^2.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-video": "^5.2.0"
+    "react-native-video": "^5.2.1"
   },
   "jest": {
     "preset": "react-native",
