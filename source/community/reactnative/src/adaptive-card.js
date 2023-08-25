@@ -248,7 +248,7 @@ export default class AdaptiveCard extends React.Component {
             </ContainerWrapper>
         );
 
-        if (!this.props.isActionShowCard) {
+        if (!this.props.isActionShowCard && this.props.keyboardAvoidingViewEnabled) {
 			adaptiveCardContent = (
                 <KeyboardAwareScrollView
                     enableOnAndroid={true}
@@ -359,9 +359,11 @@ AdaptiveCard.propTypes = {
 	contentHeight: PropTypes.number,
 	containerStyle: PropTypes.object,
 	contentContainerStyle: PropTypes.object,
-	cardScrollEnabled: PropTypes.bool
+	cardScrollEnabled: PropTypes.bool,
+	keyboardAvoidingViewEnabled: PropTypes.bool
 };
 
 AdaptiveCard.defaultProps = {
-	cardScrollEnabled: true
+	cardScrollEnabled: true,
+	keyboardAvoidingViewEnabled: true
 };
