@@ -242,6 +242,7 @@ export default class AdaptiveCard extends React.Component {
                             configManager={this.configManager}
                             style={{marginHorizontal: padding}}
                             actions={this.state.cardModel.actions}
+							scale={this.props.scale}
                         />
                     )}
                 </ScrollView>

@@ -121,6 +121,12 @@ export class ActionWrapper extends React.Component {
 		}
 	}
 
+	getScaledStyles() {
+		return this.props.scale ? StyleSheet.create({
+				paddingTop: this.props.scale * padding,
+			}) : {}
+	}
+
 	render() {
 		return (
             <InputContextConsumer>
@@ -131,6 +137,7 @@ export class ActionWrapper extends React.Component {
                                 styles.actionButtonContainer,
                                 this.getActionOrientation(),
                                 this.getActionAlignment(),
+								this.getScaledStyles(),
                                 this.props.style,
                             ]}>
                             {this.parseActionsArray(onParseError)}
