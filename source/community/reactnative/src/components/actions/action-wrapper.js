@@ -122,8 +122,8 @@ export class ActionWrapper extends React.Component {
 	}
 
 	getScaledStyles() {
-		return this.props.scale ? StyleSheet.create({
-				paddingTop: this.props.scale * paddingTop,
+		return this.props.deviceFontScale ? StyleSheet.create({
+				paddingTop: this.props.deviceFontScale * paddingTop,
 			}) : {}
 	}
 
