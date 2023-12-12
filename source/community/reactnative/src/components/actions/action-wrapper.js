@@ -15,7 +15,7 @@ import AdaptiveCard from '../../adaptive-card';
 import * as Utils from '../../utils/util';
 import * as Enums from '../../utils/enums';
 
-const padding = 10;
+const paddingTop = 10;
 
 export class ActionWrapper extends React.Component {
 
@@ -123,7 +123,7 @@ export class ActionWrapper extends React.Component {
 
 	getScaledStyles() {
 		return this.props.scale ? StyleSheet.create({
-				paddingTop: this.props.scale * padding,
+				paddingTop: this.props.scale * paddingTop,
 			}) : {}
 	}
 
@@ -162,7 +162,7 @@ export class ActionWrapper extends React.Component {
 
 const styles = StyleSheet.create({
 	actionButtonContainer: {
-		paddingTop: padding,
+		paddingTop: paddingTop,
 		flexWrap: Constants.FlexWrap
 	},
 	actionAlignmentHorizontal: {
