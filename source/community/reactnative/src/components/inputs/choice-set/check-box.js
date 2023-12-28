@@ -9,7 +9,7 @@ import {
 	TouchableOpacity,
 	StyleSheet,
 } from 'react-native';
-import { ViewPropTypes } from 'deprecated-react-native-prop-types';
+import { ViewPropTypes, TextPropTypes } from 'deprecated-react-native-prop-types';
 import { Label } from '../../elements'
 import PropTypes from 'prop-types';
 import * as Constants from '../../../utils/constants';
@@ -50,7 +50,7 @@ class CheckBox extends React.PureComponent {
 		checked: PropTypes.bool,
 		wrapText: PropTypes.bool,
 		isRadioButtonType: PropTypes.bool,
-		labelStyle: Text.propTypes.style,
+		labelStyle: TextPropTypes.style,
 		iconSize: PropTypes.number,
 	};
 
