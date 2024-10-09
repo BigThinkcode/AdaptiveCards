@@ -222,7 +222,8 @@ export default class AdaptiveCard extends React.Component {
 
 		//If contentHeight is passed by the user from adaptive card via props, we will set this as height
 		this.props.contentHeight && containerStyles.push({ height: this.props.contentHeight })
-
+		const hasSelectAction = !Utils.isNullOrEmpty(this.payload.selectAction);
+		const disableActionsNestingInSelectAction = this.props.disableActionableControlsNestingOnRoot;
         var adaptiveCardContent = (
             <ContainerWrapper
                 configManager={this.configManager}
@@ -237,7 +238,7 @@ export default class AdaptiveCard extends React.Component {
                     alwaysBounceHorizontal={false}
                     scrollEnabled={this.props.cardScrollEnabled}>
                     {this.parsePayload()}
-                    {!Utils.isNullOrEmpty(this.state.cardModel.actions) && (
+                    {(!disableActionsNestingInSelectAction || (disableActionsNestingInSelectAction && !hasSelectAction)) && !Utils.isNullOrEmpty(this.state.cardModel.actions) && (
                         <ActionWrapper
                             configManager={this.configManager}
                             style={{marginHorizontal: padding}}
@@ -260,11 +261,25 @@ export default class AdaptiveCard extends React.Component {
 		}
 
 		// checks if selectAction option is available for adaptive card
-		if (!Utils.isNullOrEmpty(this.payload.selectAction)) {
+		if (hasSelectAction) {
 			adaptiveCardContent = (
-				<SelectAction configManager={this.configManager} selectActionData={this.payload.selectAction}>
-					{adaptiveCardContent}
-				</SelectAction>
+				<>
+					<SelectAction configManager={this.configManager} selectActionData={this.payload.selectAction}>
+						{adaptiveCardContent}
+					</SelectAction>
+					{disableActionsNestingInSelectAction && !Utils.isNullOrEmpty(this.state.cardModel.actions) && (
+						<View style={this.props.rootActionContainerStyle || {position: 'absolute', bottom: 0, width: '100%'}}>
+							<ActionWrapper
+								configManager={this.configManager}
+								style={{marginHorizontal: padding}}
+								actions={this.state.cardModel.actions}
+								deviceFontScale={this.props.deviceFontScale}
+				
+							/>
+						</View>
+					)}
+				</>
+
 			);
 		}
 		return adaptiveCardContent;
@@ -362,11 +377,14 @@ AdaptiveCard.propTypes = {
 	contentContainerStyle: PropTypes.object,
 	cardScrollEnabled: PropTypes.bool,
 	keyboardAvoidingViewEnabled: PropTypes.bool,
+	disableActionableControlsNestingOnRoot: PropTypes.bool,
+	rootActionContainerStyle: PropTypes.object,
 	deviceFontScale: PropTypes.number
 };
 
 AdaptiveCard.defaultProps = {
 	cardScrollEnabled: true,
 	keyboardAvoidingViewEnabled: true,
+	disableActionableControlsNestingOnRoot: false,
 	deviceFontScale: 1
 };
