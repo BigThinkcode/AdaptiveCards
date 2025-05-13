@@ -20,8 +20,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "postinstall": "patch-package"
+    "lint": "eslint ."
   },
   "repository": {
     "url": "https://github.com/Bigthinkcode/AdaptiveCards/tree/main/source/community/reactnative",
@@ -46,8 +45,7 @@
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-test-renderer": "16.13.1",
-    "rnpm-plugin-windows": "^0.2.11",
-    "patch-package": "^6.4.7"
+    "rnpm-plugin-windows": "^0.2.11"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^6.0.2",
