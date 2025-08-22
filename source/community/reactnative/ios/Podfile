@@ -1,25 +1,44 @@
-require_relative '../node_modules/react-native/scripts/react_native_pods'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+ 
+platform :ios, min_ios_version_supported
+prepare_react_native_project!
 
-platform :ios, '11.0'
+# Disable New Architecture
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'
+ 
+linkage = ENV['USE_FRAMEWORKS']
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
 
 target 'RNAdaptiveCards' do
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :fabric_enabled => false,
+    :new_arch_enabled => false
+  )
 
   target 'RNAdaptiveCardsTests' do
     inherit! :complete
     # Pods for testing
   end
 
-  # For enabling Flipper.
-  # Note that if you use_framework!, flipper will not work.
-  # Disable these lines if you are doing use_framework!
-  #use_flipper!({ 'Flipper-Folly' => '2.3.0' }) # update this part
-  use_flipper!({  'Flipper-Folly' => '~> 2.6',"Flipper-DoubleConversion" => "1.1.7"})
   post_install do |installer|
-    flipper_post_install(installer)
+    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false
+      # :ccache_enabled => true
+    )
   end
 end
 
