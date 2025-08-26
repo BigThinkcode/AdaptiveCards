@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RNAdaptiveCardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNAdaptiveCardsTests.m */; };
 		0F859A9E243CAD0900BE2DAC /* rnadaptivecards-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F859A9D243CAD0900BE2DAC /* rnadaptivecards-test.swift */; };
-		21D4BD3A2E5872C400F1A053 /* AppDelegrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4BD392E5872C400F1A053 /* AppDelegrate.swift */; };
+		21D4BD3A2E5872C400F1A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D4BD392E5872C400F1A053 /* AppDelegate.swift */; };
 		0F940937240C20E100F43116 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F940907240C20E000F43116 /* JavaScriptCore.framework */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -55,7 +55,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNAdaptiveCards/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNAdaptiveCards/Info.plist; sourceTree = "<group>"; };
 		190CA36FBF53A8BBB6116D98 /* Pods-RNAdaptiveCards-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNAdaptiveCards-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-RNAdaptiveCards-tvOS/Pods-RNAdaptiveCards-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		21D4BD392E5872C400F1A053 /* AppDelegrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegrate.swift; sourceTree = "<group>"; };
+		21D4BD392E5872C400F1A053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RNAdaptiveCards-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RNAdaptiveCards-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RNAdaptiveCards-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNAdaptiveCards-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +139,7 @@
 		13B07FAE1A68108700A75B9A /* RNAdaptiveCards */ = {
 			isa = PBXGroup;
 			children = (
-				21D4BD392E5872C400F1A053 /* AppDelegrate.swift */,
+				21D4BD392E5872C400F1A053 /* AppDelegate.swift */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -606,7 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D4BD3A2E5872C400F1A053 /* AppDelegrate.swift in Sources */,
+				21D4BD3A2E5872C400F1A053 /* AppDelegate.swift in Sources */,
 				0F859A9E243CAD0900BE2DAC /* rnadaptivecards-test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
