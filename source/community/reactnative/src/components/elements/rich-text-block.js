@@ -42,7 +42,7 @@ export class RichTextBlock extends React.Component {
         if (this.payload.paragraphs) {
             this.payload.paragraphs.forEach((paragraph, index) => {
                 paragraphElements.push(
-                    <ParagraphElement index={index} numberOfLines={numberOfLines} paragraph={paragraph} thisArg={this} />
+                    <ParagraphElement key={`paragraph-element-${index}`} index={index} numberOfLines={numberOfLines} paragraph={paragraph} thisArg={this} />
                 );
             })
         }

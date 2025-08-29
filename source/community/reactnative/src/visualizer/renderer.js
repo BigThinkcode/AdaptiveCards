@@ -223,6 +223,7 @@ export default class Renderer extends React.Component {
         this.template = props.payload; // Creating a copy to store the template.
         this.dataJson = props?.dataJson;
         this.onModalClose = props.onModalClose;
+        this.adaptiveCardRef = React.createRef();
     }
 
     getTemplatePayload(templatejson, datajson) {
@@ -379,7 +380,7 @@ export default class Renderer extends React.Component {
                         // contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }} //we can also set the contentContainer Style for the adaptive card
                         // containerStyle={{width:100, height: 100, flexGrow:1, backgroundColor: 'lightblue'}} //we can also set the style for the adaptive card
                         // contentHeight={500} //we can also set the height of the adaptive card
-                        ref="adaptiveCardRef" />
+                        ref={this.adaptiveCardRef} />
                 }
             </View>
         );
