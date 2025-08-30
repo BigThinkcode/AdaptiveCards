@@ -227,7 +227,7 @@ export class ActionButton extends React.Component {
                     />
                 ) : null}
                 <Text 
-					numberOfLines={1}
+					numberOfLines={this.props.numberOfLines || 1}
 					maxFontSizeMultiplier={this.props.maxFontSizeMultiplier}
 					style={this.getButtonTitleStyles()}>
                     {this.title}
